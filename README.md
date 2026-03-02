@@ -8,7 +8,7 @@
 
 | | Link |
 |---|---|
-| **Frontend** | https://expenseiq.vercel.app |
+| **Frontend** | https://expensetracker-beta-eight.vercel.app/ |
 | **GitHub** | https://github.com/ratnachaplot/expenseiq |
 
 ---
