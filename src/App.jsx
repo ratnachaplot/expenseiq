@@ -54,26 +54,29 @@ function App() {
       <div className="max-w-6xl mx-auto px-4 py-6">
 
         {/* Tabs */}
-        <div className={`flex gap-2 mb-6 p-1 rounded-xl w-fit ${
-          darkMode ? 'bg-gray-800' : 'bg-white shadow'
-        }`}>
-          {tabs.map(tab => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium
-                          transition-all ${
-                activeTab === tab.id
-                  ? 'bg-blue-600 text-white shadow'
-                  : darkMode
-                    ? 'text-gray-400 hover:text-white'
-                    : 'text-gray-500 hover:text-gray-800'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+        {/* Tabs — scrollable on mobile */}
+<div className="overflow-x-auto mb-6">
+  <div className={`flex gap-1 p-1 rounded-xl w-max min-w-full sm:w-fit ${
+    darkMode ? 'bg-gray-800' : 'bg-white shadow'
+  }`}>
+    {tabs.map(tab => (
+      <button
+        key={tab.id}
+        onClick={() => setActiveTab(tab.id)}
+        className={`px-3 py-2 rounded-lg text-xs sm:text-sm font-medium
+                    transition-all whitespace-nowrap ${
+          activeTab === tab.id
+            ? 'bg-blue-600 text-white shadow'
+            : darkMode
+              ? 'text-gray-400 hover:text-white'
+              : 'text-gray-500 hover:text-gray-800'
+        }`}
+      >
+        {tab.label}
+      </button>
+    ))}
+  </div>
+</div>
 
         {/* DASHBOARD */}
         {activeTab === 'dashboard' && (

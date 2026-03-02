@@ -2,10 +2,8 @@ import { formatCurrency } from '../utils/helpers'
 
 function SummaryCards({ expenses, totalThisMonth, symbol, convertAmount, darkMode }) {
 
-  // Total all time
   const totalAllTime = expenses.reduce((sum, exp) => sum + Number(exp.amount), 0)
 
-  // Total this week
   const totalThisWeek = expenses
     .filter(exp => {
       const expDate = new Date(exp.date)
@@ -15,7 +13,6 @@ function SummaryCards({ expenses, totalThisMonth, symbol, convertAmount, darkMod
     })
     .reduce((sum, exp) => sum + Number(exp.amount), 0)
 
-  // Most expensive category this month
   const now = new Date()
   const thisMonthExpenses = expenses.filter(exp => {
     const d = new Date(exp.date)
@@ -64,28 +61,35 @@ function SummaryCards({ expenses, totalThisMonth, symbol, convertAmount, darkMod
   ]
 
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
       {cards.map((card, i) => (
         <div
           key={i}
-          className={`rounded-2xl p-5 border transition-all hover:-translate-y-1
-                      hover:shadow-lg ${
+          className={`rounded-xl p-3 sm:p-5 border transition-all
+                      hover:-translate-y-1 hover:shadow-lg ${
             darkMode
               ? 'bg-gray-800/50 border-gray-700'
               : 'bg-white border-gray-200 shadow-sm'
           }`}
         >
-          <div className={`inline-flex p-2 rounded-xl bg-gradient-to-br
-                           ${card.color} mb-3`}>
-            <span className="text-xl">{card.icon}</span>
+          {/* Icon — smaller on mobile */}
+          <div className={`inline-flex p-1.5 sm:p-2 rounded-lg sm:rounded-xl
+                           bg-gradient-to-br ${card.color} mb-2 sm:mb-3`}>
+            <span className="text-base sm:text-xl">{card.icon}</span>
           </div>
+
+          {/* Title */}
           <p className={`text-xs uppercase tracking-wider mb-1 ${
             darkMode ? 'text-gray-400' : 'text-gray-500'
           }`}>{card.title}</p>
-          <p className={`text-xl font-bold truncate ${
+
+          {/* Value — smaller font on mobile so it fits */}
+          <p className={`text-sm sm:text-xl font-bold truncate ${
             darkMode ? 'text-white' : 'text-gray-800'
           }`}>{card.value}</p>
-          <p className={`text-xs mt-1 ${
+
+          {/* Sub — hide on very small screens */}
+          <p className={`text-xs mt-1 truncate ${
             darkMode ? 'text-gray-500' : 'text-gray-400'
           }`}>{card.sub}</p>
         </div>

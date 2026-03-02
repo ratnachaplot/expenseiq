@@ -9,53 +9,37 @@ function Header() {
         ? 'bg-gray-900/95 border-gray-800 backdrop-blur'
         : 'bg-white/95 border-gray-200 backdrop-blur shadow-sm'
     }`}>
-      <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-
-        {/* Logo */}
+      <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
         <div>
-          <h1 className={`text-2xl font-extrabold ${
+          <h1 className={`text-xl font-extrabold ${
             darkMode ? 'text-white' : 'text-gray-800'
           }`}>
             💰 ExpenseIQ
           </h1>
           <p className={`text-xs ${
             darkMode ? 'text-gray-400' : 'text-gray-500'
-          }`}>
-            Smart expense tracking
-          </p>
+          }`}>Smart expense tracking</p>
         </div>
 
-        {/* Right side */}
-        <div className="flex items-center gap-4">
-          <div className={`text-right hidden sm:block`}>
-            <p className={`text-xs ${
-              darkMode ? 'text-gray-400' : 'text-gray-500'
-            }`}>Today</p>
-            <p className={`text-sm font-medium ${
-              darkMode ? 'text-white' : 'text-gray-800'
-            }`}>
-              {new Date().toLocaleDateString('en-US', {
-                weekday: 'short',
-                month: 'short',
-                day: 'numeric'
-              })}
-            </p>
-          </div>
-
-          {/* Dark mode toggle */}
+        <div className="flex items-center gap-3">
+          <p className={`text-sm font-medium hidden sm:block ${
+            darkMode ? 'text-gray-300' : 'text-gray-600'
+          }`}>
+            {new Date().toLocaleDateString('en-US', {
+              weekday: 'short', month: 'short', day: 'numeric'
+            })}
+          </p>
           <button
             onClick={toggleDarkMode}
-            className={`p-3 rounded-xl text-xl hover:scale-110 transition-all ${
+            className={`p-2.5 rounded-xl text-lg hover:scale-110 transition-all ${
               darkMode
                 ? 'bg-gray-800 hover:bg-gray-700'
                 : 'bg-gray-100 hover:bg-gray-200'
             }`}
-            title="Toggle dark mode"
           >
             {darkMode ? '☀️' : '🌙'}
           </button>
         </div>
-
       </div>
     </header>
   )
